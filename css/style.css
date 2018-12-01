@@ -1,0 +1,131 @@
+.container {
+  background: #f6f6f6;
+}
+
+.texto {
+  text-align: center;
+}
+
+input[type="text"],
+input[type="num"] {
+  border: 0px;
+  border-bottom: 2px solid #f1f1f1;
+  outline: 0px;
+}
+
+.row {
+  padding: 2%;
+}
+
+.right label {
+  text-align: center;
+}
+
+.con-radios .col-12 {
+  margin: auto;
+}
+
+.borde {
+  border-radius: 2px;
+  margin-bottom: 3%;
+  padding: 2%;
+  background: #fff;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+
+}
+
+/*.height {
+  height: 260px;
+}*/
+
+.padding {
+  padding: 3%;
+}
+
+.margin {
+  margin-bottom: 3%;
+}
+
+#informacion,
+#informacionMora {
+  overflow: hidden;
+  text-align: center;
+  background: #fff;
+
+}
+
+#informacion td {
+  width: 14%
+}
+
+table tr,
+table td {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.none,
+.noneM,
+.hiddenPDF {
+  display: none;
+}
+
+input[type="button"],
+button {
+  margin: auto;
+  border: 0px;
+  background: #2756de75;
+  padding: 10px;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+  width: 50%;
+}
+
+#Liquidacion {
+  margin: auto 25%;
+}
+
+h3 {
+  color: #2756de75;
+}
+
+header {
+  margin-bottom: 15px;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+  background: #2756de75;
+
+}
+
+.loo {
+  text-align: right;
+}
+
+.logo .loo img {
+  max-width: 100px;
+  height: auto;
+}
+
+.loo_text {
+  margin: auto;
+}
+
+.logo {
+  padding: 10px;
+  color: #fff;
+}
+
+input[type="button"],
+button {
+  color: #000;
+}
+
+.boton_activo{
+  -webkit-box-shadow: 0 1px 5px 0 #000 !important;
+  -moz-box-shadow: 0 1px 5px 0 #000 !important;
+  box-shadow: 0 1px 5px 0 #000 !important;
+  margin-bottom: 9px !important;
+  margin-top: 9px !important;
+}

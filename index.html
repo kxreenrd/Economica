@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>La Unión</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="theme/js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="theme/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="theme/js/jspdf.min.js"></script>
+	<script type="text/javascript" src="theme/js/html2canvas.min.js"></script>
+	<script type="text/javascript" src="theme/js/html2canvas.js"></script>
+	<script type="text/javascript" src="procesos.js"></script>
+	<link rel="stylesheet" type="text/css" href="theme/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body id="body">
+	<header class="container-fluid">
+		<div class="row logo">
+			<div class="col-4 loo"><img src="theme/img/union.png"></div>
+			<div class="col-8 loo_text">
+				<h1>Compañía Financiera La Unión</h1>
+			</div>
+		</div>
+	</header>
+	<div class="">
+		<div class="row">
+
+		</div>
+		<form class="row">
+			<div class="col-12">
+				<h3>Datos personales</h3>
+			</div>
+			<div class="col-6">
+				<div class="borde datosp">
+					<div class="row right">
+						<label for="#nombre" id="nombre_text" class="col-4 texto">Nombre del Cliente</label>
+						<div class="col-8">
+							<input type="text" name="nombre" id="nombre" class="col-12" value="Karen Rodriguez">
+						</div>
+
+					</div>
+					<div class="row right">
+						<label for="#cedula" id="cedula_text" class="col-4 texto">Cedula</label>
+						<div class="col-8">
+							<input type="text" name="cedula" id="cedula" class="col-12" onkeyup="format(this)" onchange="format(this)" value="1.014.287.786">
+						</div>
+					</div>
+					<div class="row right">
+						<label for="#prestamo" id="prestamo_text" class="col-4 texto">Valor del prestamo</label>
+						<div class="col-8">
+							<input type="text" name="prestamo" id="prestamo" class="col-12" onkeyup="format(this)" onchange="format(this)" value="38.000.000">
+						</div>
+					</div>
+				</div>
+
+				<div id="periocidad" style="display:none">
+					<div class="col-12">
+						<h3>Periocidad</h3>
+					</div>
+					<div class="borde height">
+						<div class="row periodos">
+
+							<div class="col-2"></div>
+							<div class="col-10 con-radios" id="perio">
+								<div class="col-12 padding margin">
+									<label class="col-3">Mensual</label><input type="radio" name="Mensual" id="check-1" class="check col-4" value="12" onclick="visualizar_tasa(this.value)">
+								</div>
+								<div class="col-12 padding margin" id="bimestral" style="display: none">
+									<label class="col-3">Bimestral</label><input type="radio" name="Bimestral" id="check-3" class="check col-4" value="6" onclick="visualizar_tasa(this.value)">
+								</div>
+								<div class="col-12 padding margin">
+									<label class="col-3">Trimestral</label><input type="radio" name="Trimestral" id="check-2" class="check col-4" value="4" onclick="visualizar_tasa(this.value)">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-6">
+				<div class="borde">
+					<div class="row right">
+						<input type="button" class="col-8" id="fija" value="Cuota Fija" onclick="tipo_prestamo(this.id)">
+						<input type="button" class="col-8" id="muerto" value="Periodo de gracia Muerto" onclick="tipo_prestamo(this.id)">
+					</div>
+
+					<div class="row right" id="cuota_fija" style="display:none">
+						<label for="#plazo" id="plazo_text" class="col-6 texto">Plazo Cuota Fija</label>
+						<div class="col-6" style="float:right">
+							<select name="plazo" id="plazo_f" class="col-12">
+								<option value="3">3 años</option>
+								<option value="4">4 años</option>
+								<option value="5">5 años</option>
+								<option value="6">6 años</option>
+								<option value="7">7 años</option>
+							</select>
+						</div>
+					</div>
+					<div class="row right" id="periodo_muerto" style="display:none">
+						<label for="#plazo" id="plazo_text" class="col-6 texto">Plazo Periodo Muerto</label>
+						<div class="col-6" style="float:right">
+							<select name="plazo" id="plazo_m" class="col-12">
+								<option value="5">5 años</option>
+								<option value="6">6 años</option>
+								<option value="7">7 años</option>
+								<option value="8">8 años</option>
+								<option value="9">9 años</option>
+								<option value="10">10 años</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div id="tasainteres" style="display:none">
+					<div class="col-12">
+						<h3>Tasa de interes</h3>
+					</div>
+					<div class="borde height">
+						<div class="row">
+
+							<div class="col-12 interes">
+								<div class="row">
+									<label class="col-6">Efectiva Anual</label><input type="num" name="efectiva" class="col-3" id="efectiva" oninput="calc_efectiva(this.value)">
+									<p class="col-1">%</p>
+								</div>
+								<div class="row">
+									<label class="col-6">Nominal Anual</label><input type="num" name="nominal" class="col-3" id="nominal" oninput="calc_nominal(this.value)">
+									<p class="col-1">%</p>
+								</div>
+								<div class="row">
+									<label class="col-6">Periodica Vencida</label><input type="num" name="periodica" class="col-3" id="periodica" oninput="calc_periodica(this.value)">
+									<p class="col-1">%</p>
+								</div>
+								<div id="texto"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<input type="button" name="" id="button" value="Calcular" onclick="calcular_tabla()">
+		</form>
+		<div class="row none">
+			<div class="col-12">
+				<h3>Cuadro de Amortizacion Cuota Fija</h3>
+			</div>
+			<table id="informacion" class="col-12">
+				<tr>
+					<td>#</td>
+					<td>Fecha</td>
+					<td>Saldo a Capital</td>
+					<td>Cuota Fija</td>
+					<td>Amortizacion a Capital</td>
+					<td>Amortizacion Interes</td>
+					<td>Flujo de Caja</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+
+	<input type="button" id="cmd" value="generate PDF" class="col-3 none">
+
+</body>
+
+</html>
